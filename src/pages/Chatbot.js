@@ -30,7 +30,7 @@ export default class Chatbot extends Component {
                     createdAt: new Date(),
                     user: {
                         _id: 2,
-                        name: 'React Native',
+                        name: 'React Nativ',
                     }
                 }
             ]
