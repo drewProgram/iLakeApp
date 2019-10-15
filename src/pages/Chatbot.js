@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 import {
-    KeyboardAvoidingView,
+    View,
     TextInput,
     Text,
     Platform,
@@ -18,82 +18,58 @@ import { GiftedChat } from 'react-native-gifted-chat';
 
 export default class Chatbot extends Component {
     state = {
-        messages: []
-    }
-
-    componentDidMount() {
+        messages: [],
+      }
+    
+      componentWillMount() {
         this.setState({
-            messages: [
-                {
-                    _id: 1,
-                    text: 'Hello developer',
-                    createdAt: new Date(),
-                    user: {
-                        _id: 2,
-                        name: 'React Native',
-                    }
-                }
-            ]
+          messages: [
+            {
+              _id: 1,
+              text: 'Olá, executivo! Meu nome é Orion e eu irei responder a todas as suas dúvidas sobre a palestra. Oi Nebula!!',
+              createdAt: new Date(),
+              user: {
+                _id: 2,
+                name: 'React Native',
+                avatar: 'https://placeimg.com/140/140/any',
+              },
+            },
+            {
+                _id: 2,
+                text: 'Testando',
+                createdAt: new Date(),
+                user: {
+                  _id: 2,
+                  name: 'React Native',
+                  avatar: 'https://placeimg.com/140/140/any',
+                },
+              },
+          ],
         })
-    }
-
-
-    onSend(messages = []) {
-        setBotState(previousState => ({
-            messages: GiftedChat.append(previousState.messages, messages),
+      }
+    
+      onSend(messages = []) {
+        this.setState(previousState => ({
+          messages: GiftedChat.append(previousState.messages, messages),
         }))
-    }
-    render() {
+      }
+    
+      render() {
         return (
-            <View>
-                <GiftedChat
-                    messages={this.state.messages}
-                    onSend={messages => this.onSend(messages)}
-                    user={{
-                        _id: 1
-                    }}
-                />
-            </View>
-        );
-
-    }
+          <GiftedChat
+            messages={this.state.messages}
+            onSend={messages => this.onSend(messages)}
+            user={{
+              _id: 1,
+            }}
+          />
+        )
+      }
 }
 
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#4f5761',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 30
-    },
-    text: {
-        fontSize: 30,
-        marginBottom: 30
-    },
-    input: {
-        height: 46,
-        alignSelf: 'stretch', // ocupa todo o espaço possível
-        marginTop: 20,
-        paddingLeft: 6
-    },
-    logo: {
-        height: 200,
-        width: 200
-    },
-    button: {
-        height: 46,
-        alignSelf: 'stretch',
-        backgroundColor: '#6e2969',
-        borderRadius: 4,
-        marginTop: 10,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    buttonText: {
-        color: '#fff',
-        fontWeight: 'bold',
-        fontSize: 16
+      flex: 1
     }
-});
+  });

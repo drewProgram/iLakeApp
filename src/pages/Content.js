@@ -16,11 +16,9 @@ import {
 // meus imports
 import api from '../services/api';
 import JojoVideo from '../assets/jojo_op_1.mp4';
-import { GiftedChat } from 'react-native-gifted-chat';
 
 export default function Content({ navigation }) {
     const [modalSummaryState, setModalSummaryState] = useState({ modalVisible: false });
-    // const [modalChatbotState, setModalChatbotState] = useState({ modalVisible: false });
     const [modalGraphicState, setModalGraphicState] = useState({ modalVisible: false });
 
     // const [state, setState] = useState({ paused: true });
@@ -30,13 +28,14 @@ export default function Content({ navigation }) {
         setModalSummaryState({ modalVisible: visible });
     }
 
-    function setModalChatbotVisible(visible) {
-        setModalChatbotState({ modalVisible: visible });
-    }
-
     function setModalGraphicVisible(visible) {
         setModalGraphicState({ modalVisible: visible });
     }
+
+    function goChatbot() {
+        navigation.navigate('Chatbot');
+    }
+
 
     return (
         <View style={styles.container}>
@@ -60,32 +59,6 @@ export default function Content({ navigation }) {
                     </View>
                 </View>
             </Modal>
-
-            {/*------------------------------ Chatbot -------------------------------*/}
-            {/* <Modal
-                animationType="fade"
-                transparent={false}
-                visible={modalChatbotState.modalVisible}
-            >
-                <View>
-                    <View>
-                        <GiftedChat
-                            messages={botState.messages}
-                            onSend={messages => onSend(messages)}
-                            user={{
-                                _id: 1,
-                            }}
-                        />
-                        <TouchableOpacity
-                            style={styles.modalButton}
-                            onPress={() => {
-                                setModalChatbotVisible(!modalChatbotState.modalVisible);
-                            }}>
-                            <Text>Fechar</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </Modal> */}
 
             {/* Graphic */}
             <Modal
@@ -137,10 +110,6 @@ export default function Content({ navigation }) {
                     }} style={styles.button}><Text>Resumo</Text>
                     </TouchableOpacity>
 
-                    {/* <TouchableOpacity onPress={() => {
-                        setModalChatbotState(true);
-                    }} style={styles.button}><Text>Chatbot</Text>
-                    </TouchableOpacity> */}
                     <TouchableOpacity style={styles.button} onPress={goChatbot}>
                         <Text>Chatbot</Text>
                     </TouchableOpacity>
@@ -197,9 +166,8 @@ const styles = StyleSheet.create({
         height: 60,
         width: 60,
         alignSelf: 'stretch',
-        backgroundColor: '#800080',
+        backgroundColor: '#6e2969',
         borderRadius: 4,
-        borderColor: '#000',
         borderWidth: 0.5,
         marginTop: 10,
         justifyContent: 'center',

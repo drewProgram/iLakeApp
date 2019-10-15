@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import PastImersions from './pages/PastImersions';
 import PresentImersions from './pages/PresentImersions';
 import Content from './pages/Content';
-import Chatbot from '.pages/Chatbot';
+import Chatbot from './pages/Chatbot';
 
 const LoginNavigator = createSwitchNavigator({
     Login,
