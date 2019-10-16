@@ -10,12 +10,14 @@ import {
     TouchableOpacity,
     Image,
     Modal,
+    Dimensions,
     Alert
 } from 'react-native';
 
 // meus imports
 import api from '../services/api';
 import JojoVideo from '../assets/jojo_op_1.mp4';
+import grafico from '../assets/grafico.jpg';
 
 export default function Content({ navigation }) {
     const [modalSummaryState, setModalSummaryState] = useState({ modalVisible: false });
@@ -36,7 +38,6 @@ export default function Content({ navigation }) {
         navigation.navigate('Chatbot');
     }
 
-
     return (
         <View style={styles.container}>
 
@@ -46,11 +47,14 @@ export default function Content({ navigation }) {
                 transparent={false}
                 visible={modalSummaryState.modalVisible}
             >
-                <View style={styles.modalContainer}>
+                <View style={styles.container}>
                     <View>
                         <Text>Resumo da palestra</Text>
+                        <View>
+                            <Text style={styles.modalText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet dolor ut ante eleifend blandit. Aenean quis nunc egestas, suscipit tortor id, lacinia odio. Nam auctor nisl nisl, ac ornare mauris elementum ut. Nulla nisi massa, feugiat vitae dignissim a, convallis vel felis. Sed venenatis consectetur quam, nec molestie eros pellentesque ac. Donec eget tortor posuere, fringilla enim sed, maximus enim. Aliquam vel massa ac tortor pharetra convallis vitae sed lacus. Nam commodo hendrerit pretium. Vestibulum cursus turpis massa, ac placerat urna pulvinar sit amet. Suspendisse potenti. Cras ac enim ac tortor porttitor aliquam. Suspendisse at velit ut leo lobortis maximus eu vitae odio. Phasellus erat magna, feugiat vitae mauris vitae, rutrum volutpat neque. Nulla imperdiet neque quis quam tempus fringilla. Duis semper mi et lacus iaculis, auctor fermentum enim molestie.</Text>
+                        </View>
                         <TouchableOpacity
-                            style={styles.modalButton}
+                            style={styles.button}
                             onPress={() => {
                                 setModalSummaryVisible(!modalSummaryState.modalVisible);
                             }}>
@@ -66,11 +70,14 @@ export default function Content({ navigation }) {
                 transparent={false}
                 visible={modalGraphicState.modalVisible}
             >
-                <View style={styles.modalContainer}>
+                <View style={styles.container}>
                     <View>
                         <Text>Gráfico</Text>
+                        <Image
+                            source={grafico}
+                        />
                         <TouchableOpacity
-                            style={styles.modalButton}
+                            style={styles.button}
                             onPress={() => {
                                 setModalGraphicVisible(!modalGraphicState.modalVisible);
                             }}>
@@ -104,19 +111,19 @@ export default function Content({ navigation }) {
                 </View>
 
                 {/* Modal buttons */}
-                <View style={{ flexDirection: 'row' }}>
+                <View >
                     <TouchableOpacity onPress={() => {
                         setModalSummaryState(true);
-                    }} style={styles.button}><Text>Resumo</Text>
+                    }} style={styles.button}><Text style={styles.buttonText}>Resumo</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.button} onPress={goChatbot}>
-                        <Text>Chatbot</Text>
+                        <Text style={styles.buttonText}>Chatbot</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => {
                         setModalGraphicState(true);
-                    }} style={styles.button}><Text>Gráfico</Text>
+                    }} style={styles.button}><Text style= {styles.buttonText}>Gráfico</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -133,9 +140,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 30
     },
-    text: {
-        fontSize: 30,
-        marginBottom: 30
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold'
     },
     scrollView: {
         position: 'absolute',
@@ -149,33 +156,22 @@ const styles = StyleSheet.create({
         height: 250,
         position: 'relative'
     },
-    modalContainer: {
-        flex: 1,
-        backgroundColor: '#4f5761',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 30
-    },
-    modalButton: {
-        alignSelf: 'stretch',
-        backgroundColor: '#6e2969',
-        justifyContent: 'center',
-        alignItems: 'center'
+    modalText: {
+        fontSize: 15
     },
     button: {
-        height: 60,
-        width: 60,
+        height: 46,
         alignSelf: 'stretch',
         backgroundColor: '#6e2969',
         borderRadius: 4,
-        borderWidth: 0.5,
-        marginTop: 10,
+        marginTop: 8,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+
     },
     buttonText: {
-        color: '#fff',
         fontWeight: 'bold',
-        fontSize: 16
+        fontSize: 16,
+        color: '#fff'
     }
 });
