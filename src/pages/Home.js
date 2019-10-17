@@ -16,9 +16,13 @@ export default function Home({ navigation }) {
         navigation.navigate('PresentImersions');
     }
 
+    function goAgenda() {
+        navigation.navigate('Agenda');
+    }
+
     return (
         <View style={styles.container}>
-            <Text style={{marginBottom: 20, fontSize: 25}}>Seja bem vindo, Andrew!</Text>
+            <Text style={{marginBottom: 20, fontSize: 25, color: '#6e2969'}}>Seja bem vindo, Andrew!</Text>
             <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity onPress={goPastImersion} style={styles.button}>
                     <Text style={styles.buttonText}>Imersões Passadas</Text>
@@ -29,7 +33,7 @@ export default function Home({ navigation }) {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Agenda</Text>
+                    <Text onPress={goAgenda} style={styles.buttonText}>Agenda</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -39,7 +43,7 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#4f5761',
+        backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 30

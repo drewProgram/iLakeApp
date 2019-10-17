@@ -17,11 +17,6 @@ import api from '../services/api';
 
 // a função recebe uma propriedade navigation para poder fazer a navegação para outra página
 export default function Imersions({ navigation }) {
-    //utilizar o createStackNavigator para navegação das duas imersões
-    
-    // iniciando estado com valor vazio
-    const [user, setUser] = useState('');
-    const [pass, setPass] = useState('');
 
     // função para navegar para outra tela
     function goContent() {
@@ -40,7 +35,7 @@ export default function Imersions({ navigation }) {
             <Text>PALESTRAS</Text>
            
             <TouchableOpacity onPress={goContent} style={styles.button}>
-                <Text style={styles.buttonText}>JoJo's Bizzare Adventure</Text>
+                <Text style={styles.buttonText}>CNI</Text>
             </TouchableOpacity>
 
         </KeyboardAvoidingView>
@@ -52,7 +47,7 @@ export default function Imersions({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#4f5761',
+        backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 30

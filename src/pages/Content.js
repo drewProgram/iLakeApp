@@ -16,8 +16,8 @@ import {
 
 // meus imports
 import api from '../services/api';
-import JojoVideo from '../assets/jojo_op_1.mp4';
-import grafico from '../assets/grafico.jpg';
+import Cni from '../assets/cni.mp4';
+import grafico from '../assets/grafico.png';
 
 export default function Content({ navigation }) {
     const [modalSummaryState, setModalSummaryState] = useState({ modalVisible: false });
@@ -49,16 +49,26 @@ export default function Content({ navigation }) {
             >
                 <View style={styles.container}>
                     <View>
-                        <Text>Resumo da palestra</Text>
                         <View>
-                            <Text style={styles.modalText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet dolor ut ante eleifend blandit. Aenean quis nunc egestas, suscipit tortor id, lacinia odio. Nam auctor nisl nisl, ac ornare mauris elementum ut. Nulla nisi massa, feugiat vitae dignissim a, convallis vel felis. Sed venenatis consectetur quam, nec molestie eros pellentesque ac. Donec eget tortor posuere, fringilla enim sed, maximus enim. Aliquam vel massa ac tortor pharetra convallis vitae sed lacus. Nam commodo hendrerit pretium. Vestibulum cursus turpis massa, ac placerat urna pulvinar sit amet. Suspendisse potenti. Cras ac enim ac tortor porttitor aliquam. Suspendisse at velit ut leo lobortis maximus eu vitae odio. Phasellus erat magna, feugiat vitae mauris vitae, rutrum volutpat neque. Nulla imperdiet neque quis quam tempus fringilla. Duis semper mi et lacus iaculis, auctor fermentum enim molestie.</Text>
+                            <Text style={{fontSize: 20}}>Resumo da palestra</Text>
+                            <View>
+                                <Text style={styles.modalText}>Representar a indústria Nacional estimular as empresas de pequeno médio e grande porte a serem mais produtivas e competitivas setor produtivo forte gera crescimento na economia mais empregos e renda melhor qualidade de vida para todos os brasileiros é para que isso aconteça que a Confederação Nacional da Indústria trabalha desenvolve estudos pesquisas e participa de debates e decisões importantes para o país que faz mais de olho no futuro incentivo a Inovação e a pesquisa apoia a educação básica profissional e executiva a 81 anos trabalhando pelo futuro da Indústria.</Text>
+                            </View>
                         </View>
+
+                        <View>
+                            <Text style={{fontSize: 20}}>Seu resumo em outras línguas</Text>
+                            <View>
+                                <Text style={styles.modalText}>Representar a indústria nacional estimular como empresas de pequeño medio y grande porte a serem mais produtivas y competitivas setor produtivo forte gera crescimento na economia mais empregos e renda melhor qualidade de vida para todos los brasileiros es para que esto ocurra en la Confederação Nacional da Indústria trabalha desenvolver estudos pesquisas e participar de debates y decisiones importantes para el país que faz mais de olho no futuro incentivo a Inovação ea pesquisa apoia a educação básica.</Text>
+                            </View>
+                        </View>
+
                         <TouchableOpacity
                             style={styles.button}
                             onPress={() => {
                                 setModalSummaryVisible(!modalSummaryState.modalVisible);
                             }}>
-                            <Text>Fechar</Text>
+                            <Text style={styles.buttonText}>Fechar</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -72,8 +82,8 @@ export default function Content({ navigation }) {
             >
                 <View style={styles.container}>
                     <View>
-                        <Text>Gráfico</Text>
                         <Image
+                        style = {{width: 350, height: 350}}
                             source={grafico}
                         />
                         <TouchableOpacity
@@ -81,7 +91,7 @@ export default function Content({ navigation }) {
                             onPress={() => {
                                 setModalGraphicVisible(!modalGraphicState.modalVisible);
                             }}>
-                            <Text>Fechar</Text>
+                            <Text style={styles.buttonText}>Fechar</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -91,10 +101,10 @@ export default function Content({ navigation }) {
             <ScrollView style={styles.scrollView}>
 
                 {/* Video Player */}
-                <View style={{ height: 245 }}>
-                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Vídeo da Palestra sobre JoJo</Text>
+                <View style={{ height: 245}}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#6e2969' }}>CNI - Há 81 anos trabalhando pelo futuro da indústria</Text>
                     <Video
-                        source={JojoVideo}
+                        source={Cni}
                         ref={(ref) => {
                             player = ref
                         }}
@@ -105,13 +115,8 @@ export default function Content({ navigation }) {
                     />
                 </View >
 
-                {/* Video description */}
-                <View style={{ marginTop: 40 }}>
-                    <Text>Jojo é um anime muito interessante e sofisticado que retrata a aventura bizarra de Jonathan Joestar e, posteriormente, seus sucessores da familía.</Text>
-                </View>
-
                 {/* Modal buttons */}
-                <View >
+                <View>
                     <TouchableOpacity onPress={() => {
                         setModalSummaryState(true);
                     }} style={styles.button}><Text style={styles.buttonText}>Resumo</Text>
@@ -123,7 +128,7 @@ export default function Content({ navigation }) {
 
                     <TouchableOpacity onPress={() => {
                         setModalGraphicState(true);
-                    }} style={styles.button}><Text style= {styles.buttonText}>Gráfico</Text>
+                    }} style={styles.button}><Text style={styles.buttonText}>Frequência de palavras</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -135,7 +140,7 @@ export default function Content({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#4f5761',
+        backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 30
@@ -154,7 +159,7 @@ const styles = StyleSheet.create({
     },
     video: {
         height: 250,
-        position: 'relative'
+        position: 'relative',
     },
     modalText: {
         fontSize: 15

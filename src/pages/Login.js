@@ -105,14 +105,15 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#4f5761',
+        backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 30
     },
     textWelcome: {
         fontSize: 30,
-        marginBottom: 30
+        marginBottom: 30,
+        color: '#6e2969'
     },
     input: {
         height: 46,
