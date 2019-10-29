@@ -1,51 +1,51 @@
-// useState para cirar um estado e pegar info do input
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
+// activity indicator will show something while the map is loading
 import {
     StyleSheet,
     View,
     ScrollView,
     Text,
     TouchableOpacity,
+    ActivityIndicator,
     Image,
-    Modal,
     Alert
 } from 'react-native';
 
 // meus imports
-import api from '../services/api';
+import MapView from 'react-native-maps';
 
-export default function Content({ navigation }) {
-    const [modalSummaryState, setModalSummaryState] = useState({ modalVisible: false });
+export default function Agenda({ navigation }) {
+    const [loading, setLoading] = useState(false);
+    // estado com a localização do usuário
+    const [coordinates, setCoordinates] = useState({
+        latitude: -23.577003,
+        longitude: -46.618896
+    });
 
     return (
         <View style={styles.container}>
 
             {/* Main page content */}
-            <ScrollView style={styles.scrollView}>
+                {/* condicional para caso esteja carregando, mostrar o loading, caso contrário, mostrar o mapa */}
+                {/* vamos buscar a localização do usuário usando o hook useEffect */}
+                { loading ? (
+                    <ActivityIndicator size="large" />
+                ) : (
+                    <MapView
 
-                {/* Video description */}
-                <View style={{ marginTop: 40 }}>
-                    <Text>Jojo é um anime muito interessante e sofisticado que retrata a aventura bizarra de Jonathan Joestar e, posteriormente, seus sucessores da familía.</Text>
-                </View>
-
-                {/* Modal buttons */}
-                <View >
-                    <TouchableOpacity onPress={() => {
-                        setModalSummaryState(true);
-                    }} style={styles.button}><Text style={styles.buttonText}>Resumo</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.button} onPress={goChatbot}>
-                        <Text style={styles.buttonText}>Chatbot</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => {
-                        setModalGraphicState(true);
-                    }} style={styles.button}><Text style= {styles.buttonText}>Gráfico</Text>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
+                        // recebe objeto  como param
+                        // latitudeDelta e longitudeDelta são props para definir o zoom do mapa
+                        initialRegion={{
+                            latitude: coordinates.latitude,
+                            longitude: coordinates.longitude,
+                            latitudeDelta: 0.0068,
+                            longitudeDelta: 0.0068,
+                        }}
+                        style={styles.map}
+                    >
+                    </MapView>
+                )}
         </View>
     );
 
@@ -53,11 +53,10 @@ export default function Content({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#4f5761',
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 30
     },
     title: {
         fontSize: 20,
@@ -71,12 +70,8 @@ const styles = StyleSheet.create({
         bottom: 0,
         flex: 1
     },
-    video: {
-        height: 250,
-        position: 'relative'
-    },
-    modalText: {
-        fontSize: 15
+    map: {
+        ...StyleSheet.absoluteFillObject
     },
     button: {
         height: 46,

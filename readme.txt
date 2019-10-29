@@ -1,7 +1,7 @@
-todo o conteúdo editável está na pasta src
-páginas, na pasta pages
+todo o conteï¿½do editï¿½vel estï¿½ na pasta src
+pï¿½ginas, na pasta pages
 rotas no routes.js
-logo está na pasta assets
+logo estï¿½ na pasta assets
 
 pacotes adicionados:
 *react-native-gesture-handler
@@ -10,8 +10,4 @@ pacotes adicionados:
 *axios
 
 para ter acesso ao localhost pelo emulador, usar comando adb reverse tcp:3333 tcp:3333
-
-46min
-
-
-
+para ter acesso ao localhost pelo meu celular, usar adb -s 0031910670 reverse tcp:3333 tcp:3333
