@@ -101,7 +101,7 @@ export default function Content({ navigation }) {
             <ScrollView style={styles.scrollView}>
 
                 {/* Video Player */}
-                <View style={{ height: 245}}>
+                <View style={{ height: 245, marginBottom: 50}}>
                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#6e2969' }}>CNI - Há 81 anos trabalhando pelo futuro da indústria</Text>
                     <Video
                         source={Cni}
